@@ -21,7 +21,7 @@ public class HelloControllerTest {
 
     @Test
     public void getGreetWebSvc() throws Exception {
-        when(greetingService.greet()).thenReturn("Hella cesi classroom");    
+        when(greetingService.greet()).thenReturn("Hello cesi classroom");    
         this.mockMvc.perform(MockMvcRequestBuilders
             .get("/")
             .contentType(MediaType.TEXT_PLAIN))
