@@ -10,7 +10,7 @@ node {
     }
     stage("Deploy"){
         configFileProvider([configFile(fileId:"9c9b5492-c9ce-4f6b-86e7-825a3372f026", variable: 'MAVEN_SETTINGS')]){
-            sh "mvn -s $MAVEN_SETTINGS -P reposilite"
+            sh "mvn -s $MAVEN_SETTINGS -Preposilite"
         }
     }
 }
