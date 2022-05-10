@@ -1,16 +1,25 @@
 node {
-    stage('Fetch repository'){
+    stage("Checkout Source Code"){
+        echo "Checkout Source Code"
         checkout scm
     }
-    stage('Build'){
-        sh "mvn package -D skipTests"
-    }
-    stage('Tests'){
+
+    stage ("Run init tests") {
+        echo "Running unit tests"
         sh "mvn test"
     }
-    stage("Deploy"){
-        configFileProvider([configFile(fileId:"9c9b5492-c9ce-4f6b-86e7-825a3372f026", variable: 'MAVEN_SETTINGS')]){
-            sh "mvn deploy -s $MAVEN_SETTINGS -Preposilite"
-        }
+
+    stage ("Build project") {
+        echo "Build project"
+        sh "mvn package -DskipTests"
     }
+
+    stage("Deploy") {
+        echo "Deploying project"
+        configFileProvider([configFile(fileId: '9c9b5492-c9ce-4f6b-86e7-825a3372f026', variable: 'MAVEN_SETTINGS')]) {
+        // Exécuter la commande mvn avec le settings
+        sh "mvn deploy -s $MAVEN_SETTINGS -Preposilite"
+    }
+
+}
 }
