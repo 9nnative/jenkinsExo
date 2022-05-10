@@ -2,7 +2,6 @@
 def VERSION
 def TAGGED
 
-
 node {
     stage("Checkout Source Code"){
         echo "Checkout Source Code"
