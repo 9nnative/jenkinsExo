@@ -8,7 +8,7 @@ node {
         checkout scm
 
         if (env.TAG_NAME){
-            VERSION = env.TAG_NAME.substring()
+            VERSION = env.TAG_NAME.substring(1)
             echo "${VERSION}"
             TAGGED = true
         }else{
